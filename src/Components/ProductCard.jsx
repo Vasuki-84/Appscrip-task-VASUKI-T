@@ -1,27 +1,23 @@
 import React from "react";
+import "../Pages/Home"; // reuse same CSS
 
-export default function ProductCard({ product }) {
+
+const ProductCard = ({ product }) => {
+  const isNew = product.id % 2 === 0;
+  const isOutOfStock = product.id % 3 === 0;
+
   return (
-    <article className="product-card" aria-labelledby={`title-${product.id}`}>
-      <div className="product-image-wrap">
-        <img
-          src={product.image}
-          alt={product.title}
-          className="product-image"
-          loading="lazy"
-        />
+    <div className="product-card">
+      {isNew && <div className="new-product">NEW PRODUCT</div>}
+      {isOutOfStock && <div className="out-of-stock">OUT OF STOCK</div>}
+
+      <img src={product.image} alt={product.title} />
+      <div className="product-info">
+        <h2>{product.title.slice(0, 22)}...</h2>
+        <p>₹{product.price}</p>
       </div>
-      <div className="product-body">
-        <h2 id={`title-${product.id}`} className="product-title">
-          {product.title}
-        </h2>
-        <p className="product-price">₹{Number(product.price).toFixed(2)}</p>
-        <p className="product-desc">{product.description.slice(0, 110)}...</p>
-        <div className="product-actions">
-          <button className="btn btn-primary">View</button>
-          <button className="btn btn-secondary" aria-label={`Add ${product.title} to cart`}>Add</button>
-        </div>
-      </div>
-    </article>
+    </div>
   );
-}
+};
+
+export default ProductCard;

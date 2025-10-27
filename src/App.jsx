@@ -3,22 +3,28 @@ import React from "react";
 import "./styles/global.css";
 import Header from "./Components/Header";
 import Sidebar from "./Components/Sidebar";
+import Home from "./Pages/Home";
+import Footer from "./Components/Footer";
 
 function App() {
   return (
-    <div className="app">
-      <Header />
+    <div className="app-root">
+      {/* Top Navbar */}
+      <Header/>
 
+      {/* Main content layout */}
       <div className="main-layout">
+        {/* Left Sidebar */}
         <Sidebar />
-        <div className="content">
-          <h1>DISCOVER OUR PRODUCTS</h1>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at
-            posuere rhoncus scelerisque.
-          </p>
-        </div>
+
+        {/* Right Main Page */}
+        <main className="content-area">
+          <Home/>
+        </main>
       </div>
+
+      {/* Footer */}
+      <Footer/>
     </div>
   );
 }

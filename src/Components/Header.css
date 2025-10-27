@@ -1,56 +1,84 @@
-.navbar {
+/* ---------- Header Container ---------- */
+.main-header {
   background: #fff;
   border-bottom: 1px solid #e5e7eb;
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
-.nav-container {
+/* ---------- Top Row ---------- */
+.top-header {
+  width: 100%;
   max-width: 1200px;
-  margin: auto;
-  padding: 0.8rem 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0.8rem 2rem;
 }
 
-.logo {
+/* Left small logo */
+.left-logo img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+/* Center LOGO text */
+.center-logo {
   font-weight: 700;
   font-size: 1.4rem;
   letter-spacing: 1px;
 }
 
-.nav-links {
+/* Right icons */
+.right-icons {
   display: flex;
-  gap: 1.5rem;
+  align-items: center;
+  gap: 1.2rem;
+  color: #111;
 }
 
-.nav-links a {
+.right-icons .lang {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* ---------- Bottom Navigation ---------- */
+.bottom-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+  padding: 0.7rem 0;
+  border-top: 1px solid #f3f4f6;
+  width: 100%;
+  background: #fff;
+}
+
+.bottom-nav a {
   text-decoration: none;
   color: #111;
-  font-weight: 500;
-  transition: color 0.2s;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
 }
 
-.nav-links a:hover {
+.bottom-nav a:hover {
   color: #0070f3;
 }
 
-.nav-icons {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  font-size: 1rem;
-}
-
-.lang {
-  font-weight: 500;
-  cursor: pointer;
-}
-
+/* ---------- Responsive ---------- */
 @media (max-width: 768px) {
-  .nav-links {
-    display: none;
+  .top-header {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .bottom-nav {
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.85rem;
   }
 }

@@ -1,48 +1,76 @@
 import React, { useEffect, useState } from "react";
 import ProductCard from "../Components/ProductCard";
+import "./Home.css";
 
-
-export default function Home() {
+function Home() {
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [sortOption, setSortOption] = useState("Recommended");
 
-  // Fetch from FakeStoreAPI
   useEffect(() => {
-    async function fetchProducts() {
-      try {
-        const res = await fetch("https://fakestoreapi.com/products");
-        if (!res.ok) throw new Error("Failed to fetch");
-        const data = await res.json();
-        setProducts(data);
-      } catch (err) {
-        console.error(err);
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchProducts();
+    fetch("https://fakestoreapi.com/products")
+      .then((res) => res.json())
+      .then((data) => setProducts(data))
+      .catch((err) => console.error(err));
   }, []);
 
-  return (
-    <section className="container home-section">
-      <header className="page-header">
-        <h1>Product Listing</h1>
-        <p className="lead">A responsive product listing mockup for the Appscrip frontend assignment.</p>
-      </header>
+  const handleSortChange = (option) => {
+    setSortOption(option);
+    setShowDropdown(false);
+  };
 
-      <section id="products" aria-live="polite">
-        {loading ? (
-          <p>Loading products...</p>
-        ) : (
-          <div className="product-grid" role="list">
-            {products.map((p) => (
-              <div role="listitem" key={p.id}>
-                <ProductCard product={p}  />
-              </div>
-            ))}
-          </div>
-        )}
+  return (
+    <div className="home-page">
+      {/* Intro */}
+      <section className="intro">
+        <h1>DISCOVER OUR PRODUCTS</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur. Amet est posuere rhoncus
+          scelerisque.
+        </p>
       </section>
-    </section>
+
+      {/* Toolbar */}
+      <div className="product-toolbar">
+        <div className="left-toolbar">
+          <span className="item-count">3425 ITEMS</span>
+          <button className="hide-filter">HIDE FILTER</button>
+        </div>
+
+        <div className="right-toolbar">
+          <div
+            className="dropdown-wrapper"
+            onClick={() => setShowDropdown(!showDropdown)}
+          >
+            <span>{sortOption} ▼</span>
+            {showDropdown && (
+              <ul className="dropdown-menu">
+                <li onClick={() => handleSortChange("Recommended")}>
+                  Recommended
+                </li>
+                <li onClick={() => handleSortChange("Newest First")}>
+                  Newest First
+                </li>
+                <li onClick={() => handleSortChange("Price: Low to High")}>
+                  Price: Low to High
+                </li>
+                <li onClick={() => handleSortChange("Price: High to Low")}>
+                  Price: High to Low
+                </li>
+              </ul>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Products */}
+      <div className="product-grid">
+        {products.map((item) => (
+          <ProductCard key={item.id} product={item} />
+        ))}
+      </div>
+    </div>
   );
 }
+
+export default Home;

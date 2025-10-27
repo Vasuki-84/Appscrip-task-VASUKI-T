@@ -1,29 +1,43 @@
 import React from "react";
 import "./Header.css";
+import { Search, Heart, ShoppingBag, User } from "lucide-react";
 
-const Header = () => {
+function Header() {
   return (
-    <header className="navbar">
-      <div className="nav-container">
-        <div className="logo">LOGO</div>
+    <header className="main-header">
+      {/* --- Top bar --- */}
+      <div className="top-header">
+        {/* Left small icon/logo */}
+        <div className="left-logo">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg"
+            alt="small logo"
+          />
+        </div>
 
-        <nav className="nav-links">
-          <a href="#">Shop</a>
-          <a href="#">Skills</a>
-          <a href="#">Stories</a>
-          <a href="#">About</a>
-          <a href="#">Contact Us</a>
-        </nav>
+        {/* Center title logo */}
+        <div className="center-logo">LOGO</div>
 
-        <div className="nav-icons">
-          <span className="icon">🔍</span>
-          <span className="icon">🛒</span>
-          <span className="icon">👤</span>
-          <span className="lang">ENG ⌄</span>
+        {/* Right icons */}
+        <div className="right-icons">
+          <Search size={18} />
+          <Heart size={18} />
+          <ShoppingBag size={18} />
+          <User size={18} />
+          <span className="lang">ENG ▼</span>
         </div>
       </div>
+
+      {/* --- Bottom navigation bar --- */}
+      <nav className="bottom-nav">
+        <a href="#">SHOP</a>
+        <a href="#">SKILLS</a>
+        <a href="#">STORIES</a>
+        <a href="#">ABOUT</a>
+        <a href="#">CONTACT US</a>
+      </nav>
     </header>
   );
-};
+}
 
 export default Header;
