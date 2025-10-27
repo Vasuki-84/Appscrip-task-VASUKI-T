@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import ProductCard from "../Components/ProductCard";
 import "./Home.css";
+import { Check } from "lucide-react";
 
 function Home() {
   const [products, setProducts] = useState([]);
   const [showDropdown, setShowDropdown] = useState(false);
   const [sortOption, setSortOption] = useState("Recommended");
+  const dropdownRef = useRef(null);
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
@@ -14,6 +16,25 @@ function Home() {
       .catch((err) => console.error(err));
   }, []);
 
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setShowDropdown(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const options = [
+    "Recommended",
+    "Newest First",
+    "Popular",
+    "Price : High to Low",
+    "Price : Low to High",
+  ];
+
   const handleSortChange = (option) => {
     setSortOption(option);
     setShowDropdown(false);
@@ -21,7 +42,6 @@ function Home() {
 
   return (
     <div className="home-page">
-      {/* Intro */}
       <section className="intro">
         <h1>DISCOVER OUR PRODUCTS</h1>
         <p>
@@ -30,40 +50,41 @@ function Home() {
         </p>
       </section>
 
-      {/* Toolbar */}
+      {/* ---------- Toolbar ---------- */}
       <div className="product-toolbar">
-        <div className="left-toolbar">
+        <div className="toolbar-left">
           <span className="item-count">3425 ITEMS</span>
           <button className="hide-filter">HIDE FILTER</button>
         </div>
 
-        <div className="right-toolbar">
+        {/* Dropdown aligned to right */}
+        <div className="toolbar-right" ref={dropdownRef}>
           <div
             className="dropdown-wrapper"
             onClick={() => setShowDropdown(!showDropdown)}
           >
-            <span>{sortOption} ▼</span>
+            <span className="dropdown-label">{sortOption.toUpperCase()} ▼</span>
+
             {showDropdown && (
               <ul className="dropdown-menu">
-                <li onClick={() => handleSortChange("Recommended")}>
-                  Recommended
-                </li>
-                <li onClick={() => handleSortChange("Newest First")}>
-                  Newest First
-                </li>
-                <li onClick={() => handleSortChange("Price: Low to High")}>
-                  Price: Low to High
-                </li>
-                <li onClick={() => handleSortChange("Price: High to Low")}>
-                  Price: High to Low
-                </li>
+                {options.map((option) => (
+                  <li
+                    key={option}
+                    onClick={() => handleSortChange(option)}
+                    className={
+                      sortOption === option ? "active-option" : "inactive-option"
+                    }
+                  >
+                    {sortOption === option && <Check size={14} />} {option}
+                  </li>
+                ))}
               </ul>
             )}
           </div>
         </div>
       </div>
 
-      {/* Products */}
+      {/* ---------- Product Grid ---------- */}
       <div className="product-grid">
         {products.map((item) => (
           <ProductCard key={item.id} product={item} />
