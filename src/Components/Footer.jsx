@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Footer.css";
-import { Mail, Instagram, Linkedin } from "lucide-react";
+import { Mail, Instagram, Linkedin, ChevronDown, ChevronUp } from "lucide-react";
 
 function Footer() {
+  const [openSection, setOpenSection] = useState(null);
+  const toggleSection = (section) => {
+    setOpenSection(openSection === section ? null : section);
+  };
+
   return (
     <footer className="footer">
       {/* --- Newsletter Section --- */}
@@ -20,8 +25,8 @@ function Footer() {
 
       <hr className="divider" />
 
-      {/* --- Main Footer Columns --- */}
-      <div className="footer-content">
+      {/* --- Footer Content (Desktop) --- */}
+      <div className="footer-content desktop-footer">
         <div className="footer-col">
           <h4>mëttä muse</h4>
           <ul>
@@ -61,8 +66,7 @@ function Footer() {
             <span>USD</span>
           </div>
           <small>
-            Transactions will be completed in Euros and a currency reference is
-            available on hover.
+            Transactions will be completed in Euros and a currency reference is available on hover.
           </small>
         </div>
 
@@ -97,6 +101,57 @@ function Footer() {
             />
           </div>
         </div>
+      </div>
+
+      {/* --- Collapsible Mobile Footer --- */}
+      <div className="mobile-footer">
+        {[
+          {
+            title: "mëttä muse",
+            items: [
+              "About Us",
+              "Stories",
+              "Artisans",
+              "Boutiques",
+              "Contact Us",
+              "EU Compliances Docs",
+            ],
+          },
+          {
+            title: "QUICK LINKS",
+            items: [
+              "Orders & Shipping",
+              "Join/Login as a Seller",
+              "Payment & Pricing",
+              "Return & Refunds",
+              "FAQs",
+              "Privacy Policy",
+              "Terms & Conditions",
+            ],
+          },
+          { title: "FOLLOW US", items: ["Instagram", "LinkedIn"] },
+        ].map((section, index) => (
+          <div key={index} className="mobile-section">
+            <button
+              onClick={() => toggleSection(section.title)}
+              className="mobile-section-header"
+            >
+              {section.title}
+              {openSection === section.title ? (
+                <ChevronUp size={18} />
+              ) : (
+                <ChevronDown size={18} />
+              )}
+            </button>
+            {openSection === section.title && (
+              <ul className="mobile-section-list">
+                {section.items.map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
+              </ul>
+            )}
+          </div>
+        ))}
       </div>
 
       <hr className="divider" />

@@ -169,6 +169,7 @@
     flex-direction: column;
     align-items: flex-start;
   }
+  
 
   .newsletter-form {
     width: 100%;
@@ -187,5 +188,47 @@
     .footer-content {
       grid-template-columns: 1fr;
     }
+
+  }
+}
+/* Collapsible mobile footer */
+.mobile-footer {
+  display: none;
+}
+
+.mobile-section {
+  border-bottom: 1px solid #333;
+  padding: 0.8rem 0;
+}
+
+.mobile-section-header {
+  width: 100%;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.mobile-section-list {
+  margin-top: 0.5rem;
+  padding-left: 0.5rem;
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+.mobile-section-list li {
+  padding: 0.3rem 0;
+}
+@media (max-width: 768px) {
+  .desktop-footer {
+    display: none;
+  }
+  .mobile-footer {
+    display: block;
   }
 }
