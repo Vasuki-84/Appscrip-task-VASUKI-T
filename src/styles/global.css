@@ -15,8 +15,9 @@ body {
 .main-layout {
   display: flex;
   flex: 1;
-  max-width: 1400px;
-  margin: 0 auto;
+  max-width: 1800px;
+  margin: 2px;
+  flex-wrap: wrap;
 }
 
 /* Sidebar */
@@ -187,7 +188,7 @@ select {
 /* Footer */
 .site-footer {
   border-top: 1px solid #e5e7eb;
-  padding: 1rem;
+  padding: auto;
   text-align: center;
   color: #6b7280;
   font-size: 0.85rem;
@@ -204,6 +205,7 @@ select {
     border-bottom: 1px solid #e5e7eb;
   }
   .content-area {
-    padding: 1rem;
+    padding: auto;
+    margin: auto;
   }
 }
