@@ -1,35 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Header.css";
-import { Search, Heart, ShoppingBag, User } from "lucide-react";
+import { Search, Heart, ShoppingBag, User, Menu, X } from "lucide-react";
 
 function Header() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <header className="main-header">
-      {/* --- Top bar --- */}
+      {/* --- Top Header --- */}
       <div className="top-header">
-        {/* Left small icon/logo */}
-        <div className="left-logo">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg"
-            alt="small logo"
-          />
+        {/* Left: Hamburger / Logo icon */}
+        <div className="header-left">
+          <button
+            className="menu-toggle"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
+          >
+            {menuOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
         </div>
 
-        {/* Center title logo */}
-        <div className="center-logo">LOGO</div>
+        {/* Center: Logo text */}
+        <div className="header-center">LOGO</div>
 
-        {/* Right icons */}
-        <div className="right-icons">
+        {/* Right: Icons */}
+        <div className="header-right">
           <Search size={18} />
           <Heart size={18} />
           <ShoppingBag size={18} />
-          <User size={18} />
+          <span className="lang"><User size={18} /></span>
           <span className="lang">ENG ▼</span>
         </div>
       </div>
 
-      {/* --- Bottom navigation bar --- */}
-      <nav className="bottom-nav">
+      {/* --- Bottom Navigation --- */}
+      <nav className={`bottom-nav ${menuOpen ? "active" : ""}`}>
+        <a href="#">HOME</a>
         <a href="#">SHOP</a>
         <a href="#">SKILLS</a>
         <a href="#">STORIES</a>

@@ -1,60 +1,67 @@
-/* ---------- Header Container ---------- */
 .main-header {
   background: #fff;
   border-bottom: 1px solid #e5e7eb;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   width: 100%;
+  position: relative;
+  z-index: 1000;
 }
 
-/* ---------- Top Row ---------- */
+/* --- Top Header --- */
 .top-header {
-  width: 100%;
-  max-width: 1200px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.8rem 2rem;
+  padding: 0.8rem 1.2rem;
 }
 
-/* Left small logo */
-.left-logo img {
-  width: 32px;
-  height: 32px;
-  object-fit: contain;
-}
-
-/* Center LOGO text */
-.center-logo {
-  font-weight: 700;
-  font-size: 1.4rem;
-  letter-spacing: 1px;
-}
-
-/* Right icons */
-.right-icons {
+/* Create equal-width columns */
+.header-left,
+.header-center,
+.header-right {
+  flex: 1;
   display: flex;
   align-items: center;
-  gap: 1.2rem;
+}
+
+/* Left section (hamburger) */
+.header-left {
+  justify-content: flex-start;
+}
+
+/* Center section (logo) */
+.header-center {
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+/* Right section (icons) */
+.header-right {
+  justify-content: flex-end;
+  gap: 1rem;
   color: #111;
 }
 
-.right-icons .lang {
-  font-size: 0.9rem;
+.lang {
+  font-size: 0.85rem;
   font-weight: 500;
 }
 
-/* ---------- Bottom Navigation ---------- */
+/* --- Nav Bar --- */
 .bottom-nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 2.5rem;
-  padding: 0.7rem 0;
+  gap: 2rem;
+  padding: 0.6rem 0;
   border-top: 1px solid #f3f4f6;
   width: 100%;
   background: #fff;
+  border: gray;
+  border-radius: 2px;
+  border-width: 2px;
 }
 
 .bottom-nav a {
@@ -62,23 +69,42 @@
   color: #111;
   font-weight: 600;
   font-size: 0.9rem;
-  letter-spacing: 0.5px;
 }
 
-.bottom-nav a:hover {
-  color: #0070f3;
+/* --- Mobile Styles --- */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #111;
 }
 
-/* ---------- Responsive ---------- */
 @media (max-width: 768px) {
-  .top-header {
-    flex-direction: column;
-    gap: 0.6rem;
+  .menu-toggle {
+    display: block;
   }
 
+  .lang,
   .bottom-nav {
-    flex-wrap: wrap;
-    gap: 1rem;
-    font-size: 0.85rem;
+    display: none;
   }
+
+  .bottom-nav.active {
+  display: flex;
+  flex-direction: column; /* keep items in one line */
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  background: #fff;
+  width: 100%;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  padding: 1rem 0;
+  border-top: 1px solid #f3f4f6;
+  
+}
+
+
 }

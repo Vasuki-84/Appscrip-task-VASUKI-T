@@ -1,0 +1,21 @@
+/* ---------- Product Grid Layout ---------- */
+.product-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, 1fr); /* Default for small screens */
+  padding: 1rem;
+}
+
+/* Medium screens (Tablets) — show 3 per row */
+@media (min-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Large screens (Desktops) — show 4 per row */
+@media (min-width: 1200px) {
+  .product-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

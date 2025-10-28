@@ -1,14 +1,3 @@
-/* ---------- Toolbar Layout ---------- */
-.product-toolbar {
-  display: flex;
-  justify-content: space-between; /* pushes right side to end */
-  align-items: center;
-  border-bottom: 1px solid #e5e7eb;
-  padding-bottom: 0.8rem;
-  margin-bottom: 1.5rem;
-  font-size: 0.9rem;
-}
-
 .toolbar-left {
   display: flex;
   align-items: center;
@@ -93,24 +82,10 @@
   color: #555;
 }
 
-/* ---------- Responsive ---------- */
-@media (max-width: 768px) {
-  .product-toolbar {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.8rem;
-  }
-
-  .toolbar-right {
-    align-self: flex-end;
-  }
-}
-
-
 /* ====== Container for all products ====== */
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); 
+  grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
   padding: 2rem 3rem;
   background-color: #fff;
@@ -195,26 +170,6 @@
   color: #000;
 }
 
-/* ====== Responsive Design ====== */
-@media (max-width: 1024px) {
-  .products-grid {
-    grid-template-columns: repeat(3, 1fr); /* 3 per row for tablets */
-  }
-}
-
-@media (max-width: 768px) {
-  .products-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 per row for mobile */
-  }
-}
-
-@media (max-width: 480px) {
-  .products-grid {
-    grid-template-columns: 1fr; /* 1 per row for very small screens */
-  }
-}
-
-
 /* "Sign in" link */
 .signin-text {
   font-size: 0.85rem;
@@ -235,7 +190,12 @@
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: rgba(255, 255, 255, 0.95); /* white strip with slight transparency */
+  background: rgba(
+    255,
+    255,
+    255,
+    0.95
+  ); /* white strip with slight transparency */
   color: #000;
   font-weight: 600;
   font-size: 0.8rem;
@@ -253,13 +213,10 @@
 }
 
 .filter-sidebar {
-  width: 270px;
+  width: 250px;
+  border-right: 1px solid #e5e7eb;
+  padding: 1rem;
   background: #fff;
-  border-right: 1px solid #ddd;
-  padding: 20px;
-  transition: all 0.3s ease;
-  height: 100%;
-  overflow-y: auto;
 }
 
 .filter-section {
@@ -302,12 +259,250 @@
   text-decoration: underline;
 }
 
-.product-grid {
-  flex: 1;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-  padding: 20px;
-  transition: all 0.3s ease;
+/* Toolbar container */
+.product-toolbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+  border-top: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 0.6rem 0;
+  position: relative;
+  background-color: #fff;
+  font-weight: 600;
 }
 
+/* Filter and sort buttons */
+.filter-toggle,
+.sort-btn {
+  background: none;
+  border: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: #111;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+/* Divider between Filter and Recommended */
+.divider {
+  color: #131212;
+}
+
+/* Dropdown styling */
+.sort-menu {
+  position: absolute;
+  top: 110%;
+  right: 0;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  width: 200px;
+  z-index: 10;
+}
+
+.sort-menu li {
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+}
+
+.sort-menu li:hover {
+  background: #f3f4f6;
+}
+
+.sort-menu .active {
+  background: #fce7f3;
+  color: #e11d48;
+}
+
+/* Sidebar Filter (on mobile) */
+.filter-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 75%;
+  height: 100vh;
+  background: #fff;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
+  padding: 1rem;
+  z-index: 200;
+  overflow-y: auto;
+  animation: slideIn 0.3s ease-in-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Default Sidebar */
+.filter-sidebar {
+  width: 250px;
+  border-right: 1px solid #e5e7eb;
+  padding: 1rem;
+  background: #fff;
+}
+
+/* Desktop filter title */
+.desktop-filter-title {
+  display: block;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+/* Mobile header with close button */
+.filter-header-top {
+  display: none;
+}
+
+/* --- MOBILE STYLES --- */
+@media (max-width: 768px) {
+  .filter-sidebar {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 80%;
+    height: 100vh;
+    background: #fff;
+    z-index: 1000;
+    transition: left 0.3s ease;
+    padding: 1.5rem;
+    overflow-y: auto;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .filter-sidebar.visible {
+    left: 0;
+  }
+
+  .filter-header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5rem;
+  }
+
+  .filter-header-top h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  .close-filter {
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+  }
+
+  .desktop-filter-title {
+    display: none;
+  }
+}
+
+/* Hide sidebar on large screens */
+@media (min-width: 769px) {
+   .filter-sidebar {
+    position: sticky;          /* stays visible when scrolling */
+    top: 0;
+    width: 250px;
+    min-width: 250px;
+    border-right: 1px solid #e5e7eb;
+    background-color: #fff;
+    padding: 1rem;
+    height: 100vh;             /* full height sidebar */
+    overflow-y: auto;          /* scroll if filters are long */
+  }
+
+  .products-grid {
+    flex: 1;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 2rem;
+  }
+ 
+}
+/* Toolbar Container */
+.product-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  background: #fff;
+}
+
+/* Filter Button */
+.filter-toggle {
+  background: none;
+  border: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #111;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+/* Show/Hide text visibility control */
+.desktop-label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.mobile-label {
+  display: none;
+}
+
+/* On small screens  */
+@media (max-width: 768px) {
+  .desktop-label {
+    display: none;
+  }
+
+  .mobile-label {
+    display: flex;
+  }
+  .product-toolbar {
+    justify-content: center; /* Center both buttons */
+    flex-wrap: wrap; /* Allow them to wrap if needed */
+    gap: 0.8rem;
+    padding: 0.8rem 1rem;
+  }
+
+  .toolbar-left {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .item-count {
+    display: none; /* Hide item count on small screens */
+  }
+
+  .hide-filter {
+    font-size: 0.9rem;
+  }
+
+  .toolbar-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Make both filter + recommended appear in same line neatly */
+  .dropdown-wrapper {
+    display: inline-flex;
+    align-items: center;
+  }
+}

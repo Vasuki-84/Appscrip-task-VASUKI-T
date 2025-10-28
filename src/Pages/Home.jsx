@@ -113,12 +113,18 @@ function Home() {
       {/* ---------- Toolbar ---------- */}
       <div className="product-toolbar">
         <div className="toolbar-left">
-          <span className="item-count">3425 ITEMS</span>
           <button
             className="hide-filter"
             onClick={() => setShowFilter(!showFilter)}
           >
-            {showFilter ? "HIDE FILTER" : "SHOW FILTER"}
+            {/* For large screens */}
+            <span className="desktop-label">
+              <span className="item-count">3425 ITEMS</span>
+              {showFilter ? "HIDE FILTER" : "SHOW FILTER"}
+            </span>
+
+            {/* For small screens */}
+            <span className="mobile-label">FILTER</span>
           </button>
         </div>
 
@@ -154,8 +160,20 @@ function Home() {
       <div className="content-area">
         {/* ---------- Sidebar ---------- */}
         {showFilter && (
-          <aside className="filter-sidebar">
-            <h3>Filters</h3>
+          <aside className={`filter-sidebar ${showFilter ? "visible" : ""}`}>
+            {/* Top header (only visible on mobile) */}
+            <div className="filter-header-top">
+              <h3>Filters</h3>
+              <button
+                className="close-filter"
+                onClick={() => setShowFilter(false)}
+              >
+                ✕
+              </button>
+            </div>
+
+            {/* For desktop view (normal title) */}
+            <h3 className="desktop-filter-title">Filters</h3>
 
             {/* Generate each dropdown filter section */}
             {Object.keys(filterOptions).map((category) => (

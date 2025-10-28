@@ -15,26 +15,11 @@ body {
 .main-layout {
   display: flex;
   flex: 1;
-  max-width: 1800px;
+  max-width: 1400px;
   margin: 2px;
   flex-wrap: wrap;
 }
 
-/* Sidebar */
-.sidebar {
-  width: 260px;
-  border-right: 1px solid #e5e7eb;
-  padding: 1.5rem 1rem;
-  background: #fff;
-}
-
-.sidebar-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.9rem;
-  margin-bottom: 1.5rem;
-}
 
 .filter-item {
   border-bottom: 1px solid #f3f4f6;
@@ -60,7 +45,7 @@ select {
 /* Main content area */
 .content-area {
   flex: 1;
-  padding: 2rem 2rem 4rem;
+  padding: 2rem 2rem 2rem;
   background: #fff;
 }
 
@@ -81,7 +66,7 @@ select {
 /* Grid container */
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1.5rem;
 }
 
@@ -184,6 +169,45 @@ select {
   font-weight: 700;
   font-size: 1.3rem;
 }
+
+/* Product Grid Layout */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* default for mobile/tablet */
+  gap: 1.5rem;
+}
+
+/* on large screens */
+@media (min-width: 1200px) {
+  .product-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/*  show 2 per row */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 👇 For small screens (mobiles) show 1 per row */
+@media (max-width: 767px) {
+  .product-grid {
+    grid-template-columns:  repeat(2, 1fr);
+  }
+  .content-area {
+  flex: 1;
+  padding: 1rem 1rem 1rem;
+  background: #fff;
+}
+}
+.product-grid {
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
 
 /* Footer */
 .site-footer {
