@@ -2,14 +2,14 @@
 .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 0.5fr));
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 /* Product card */
 .product-card {
   position: relative;
   border: 1px solid #e5e7eb;
-  padding: 1rem;
+  padding: 0.5rem;
   display: flex;
   flex-direction: column;
   transition: all 0.2s ease;
@@ -22,7 +22,7 @@
 .product-card img {
   width: 100%;
   height: 200px;
-  object-fit:contain;
+  object-fit: contain;
   border: 1px solid #f3f4f6;
   margin-bottom: 1rem;
   background: #fafafa;
@@ -38,13 +38,10 @@
   font-size: 0.85rem;
   color: #6b7280;
   margin: 0;
-
 }
 
 .product-card .product-info .text {
-
   display: inline;
-
 }
 
 /* Out of stock tag */

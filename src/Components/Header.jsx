@@ -11,7 +11,6 @@ function Header() {
       <div className="top-header">
         {/* Left: Hamburger / Logo icon */}
         <div className="header-left">
-          
           <button
             className="menu-toggle"
             onClick={() => setMenuOpen(!menuOpen)}
@@ -19,29 +18,25 @@ function Header() {
           >
             {menuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
-           <div className="header-left">
-          <img
-            src="https://i.pinimg.com/1200x/95/0f/31/950f31b8439fa0f68194154611f91238.jpg"   // 👈 put your logo file inside "public/images/"
-            alt="Logo"
-            className="logo-img"
-          />
-        </div>
+          <div className="header-left">
+            <img
+              src="https://i.pinimg.com/1200x/95/0f/31/950f31b8439fa0f68194154611f91238.jpg"
+              alt="Logo"
+              className="logo-img"
+            />
+          </div>
         </div>
 
-         
-       
-
-        {/* Center: Logo text */}
         <div className="header-center">LOGO</div>
-
-        
 
         {/* Right: Icons */}
         <div className="header-right">
           <Search size={18} />
           <Heart size={18} />
           <ShoppingBag size={18} />
-          <span className="lang"><User size={18} /></span>
+          <span className="lang">
+            <User size={18} />
+          </span>
           <span className="lang">ENG ▼</span>
         </div>
       </div>

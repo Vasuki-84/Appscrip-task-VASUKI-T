@@ -413,15 +413,15 @@
 
 /* Hide sidebar on large screens */
 @media (min-width: 769px) {
-   .filter-sidebar {
-    position: sticky;         
+  .filter-sidebar {
+    position: sticky;
     top: 0;
     width: 250px;
     min-width: 250px;
     border-right: 1px solid #e5e7eb;
     background-color: #fff;
     padding: 1rem;
-    height: 100vh;            
+    height: 100vh;
   }
 
   .products-grid {
@@ -429,7 +429,6 @@
     grid-template-columns: repeat(4, 1fr);
     padding: 1rem;
   }
- 
 }
 /* Toolbar Container */
 .product-toolbar {
@@ -474,8 +473,8 @@
     display: flex;
   }
   .product-toolbar {
-    justify-content: center; /* Center both buttons */
-    flex-wrap: wrap; /* Allow them to wrap if needed */
+    justify-content: center;
+    flex-wrap: wrap;
     gap: 0.8rem;
     padding: 0.8rem 1rem;
   }
@@ -486,7 +485,7 @@
   }
 
   .item-count {
-    display: none; /* Hide item count on small screens */
+    display: none;
   }
 
   .hide-filter {
@@ -499,7 +498,6 @@
     justify-content: center;
   }
 
-  /* Make both filter + recommended appear in same line neatly */
   .dropdown-wrapper {
     display: inline-flex;
     align-items: center;

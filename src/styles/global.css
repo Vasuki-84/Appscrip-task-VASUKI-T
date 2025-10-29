@@ -3,7 +3,6 @@ body {
   font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   color: #111;
   background: #fff;
- 
 }
 
 /* Layout */
@@ -11,7 +10,6 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  
 }
 
 .main-layout {
@@ -21,8 +19,6 @@ body {
   margin-right: auto;
   margin-left: auto;
   flex-wrap: wrap;
-  
-  
 }
 
 .filter-item {
@@ -51,7 +47,6 @@ select {
   flex: 1;
   padding: 1rem 1rem 1rem;
   background: #fff;
-
 }
 
 .content-area h1 {
@@ -127,8 +122,8 @@ select {
 @media (max-width: 767px) {
   .product-grid {
     grid-template-columns: repeat(2, 1fr);
+    margin: 0%;
   }
- 
 }
 
 /* Footer */
@@ -151,11 +146,12 @@ select {
     border-bottom: 1px solid #e5e7eb;
   }
   .content-area {
-    padding: auto;
-    margin: auto;
+    padding: 0px;
+    margin: 0px;
   }
   .main-header,
-  .footer {
+  .site-footer {
     width: 100%;
+    max-width: 100%;
   }
 }
