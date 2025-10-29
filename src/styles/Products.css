@@ -1,0 +1,96 @@
+/* Grid container */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 0.5fr));
+  gap: 1.5rem;
+}
+
+/* Product card */
+.product-card {
+  position: relative;
+  border: 1px solid #e5e7eb;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s ease;
+}
+
+.product-card:hover {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+.product-card img {
+  width: 100%;
+  height: 200px;
+  object-fit:contain;
+  border: 1px solid #f3f4f6;
+  margin-bottom: 1rem;
+  background: #fafafa;
+}
+
+.product-info h2 {
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.product-info p {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin: 0;
+
+}
+
+.product-card .product-info .text {
+
+  display: inline;
+
+}
+
+/* Out of stock tag */
+.out-of-stock {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border: 2px solid #22c55e;
+  color: #000;
+  font-weight: 600;
+  padding: 0.4rem 1rem;
+  font-size: 0.8rem;
+}
+
+/* New product tag */
+.new-product {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: #111;
+  color: #fff;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.5px;
+  border-radius: 2px;
+  font-weight: 500;
+}
+
+/* ---------- Product Grid Layout ----------*/
+.product-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 1rem;
+}
+
+@media (min-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .product-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

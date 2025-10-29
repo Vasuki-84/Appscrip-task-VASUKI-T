@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Heart } from "lucide-react";
 import "../Pages/Home.css";
+import "../styles/Products.css";
 
 const ProductCard = ({ product }) => {
   const [liked, setLiked] = useState(false);
@@ -28,8 +29,10 @@ const ProductCard = ({ product }) => {
       {/* Product info */}
       <div className="product-info">
         <h2>{product.title.slice(0, 22)}...</h2>
-        <p className="signin-text">Sign in</p>
-        <p>or create account to see pricing</p>
+        <div className="text">
+          <p className="signin-text">Sign in</p>
+          <p>   or create account to see pricing</p>
+        </div>
       </div>
     </div>
   );

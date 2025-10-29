@@ -147,7 +147,7 @@ function Home() {
                         : "inactive-option"
                     }
                   >
-                    {sortOption === option && <Check size={14} />} {option}
+                    {sortOption === option && <Check size={13} />} {option}
                   </li>
                 ))}
               </ul>

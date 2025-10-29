@@ -1,6 +1,12 @@
 import React, { useState } from "react";
-import "./Footer.css";
-import { Mail, Instagram, Linkedin, ChevronDown, ChevronUp } from "lucide-react";
+import "../styles/Footer.css";
+import {
+  Mail,
+  Instagram,
+  Linkedin,
+  ChevronDown,
+  ChevronUp,
+} from "lucide-react";
 
 function Footer() {
   const [openSection, setOpenSection] = useState(null);
@@ -66,7 +72,8 @@ function Footer() {
             <span>USD</span>
           </div>
           <small>
-            Transactions will be completed in Euros and a currency reference is available on hover.
+            Transactions will be completed in Euros and a currency reference is
+            available on hover.
           </small>
         </div>
 
@@ -84,19 +91,19 @@ function Footer() {
               alt="GPay"
             />
             <img
-              src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Mastercard-logo.png"
+              src="https://i.pinimg.com/1200x/8a/7d/31/8a7d3128631f714e387425cf1461f7c2.jpg"
               alt="Mastercard"
             />
             <img
-              src="https://i.pinimg.com/736x/10/4f/24/104f249d8b4824276ed9f2892a8fdb6e.jpg"
+              src="https://i.pinimg.com/736x/26/b9/37/26b937d62e2e01712f4116337c4f5549.jpg"
               alt="Amex"
             />
             <img
-              src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Apple_Pay_logo.svg"
+              src="https://i.pinimg.com/1200x/8a/91/46/8a9146626fb139b4d6bff3f091d47ca8.jpg"
               alt="Apple Pay"
             />
             <img
-              src="https://i.pinimg.com/736x/10/4f/24/104f249d8b4824276ed9f2892a8fdb6e.jpg"
+              src="https://i.pinimg.com/736x/21/94/b4/2194b4732a85d255908ea5c296c399ea.jpg"
               alt="Pay"
             />
           </div>
